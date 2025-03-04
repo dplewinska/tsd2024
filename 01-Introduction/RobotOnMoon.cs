@@ -11,7 +11,57 @@ public class RobotOnMoon
 {
     public string isSafeCommand(string[] board, string S)
     {
-        return default(string);
+    public string isSafeCommand(string[] board, string S)
+    {
+        int initialPositionI = -1;
+		int initialPositionJ = -1;
+        for (int i = 0; i < board.Length; i++) {
+            for (int j = 0 ; j < board[i].Length; j++ ) {
+                if (board[i][j] == 'S') {
+                    initialPositionI = i;
+                    initialPositionJ = j;
+                    break;
+                }
+            }
+        }
+        int currentPositionI = initialPositionI;
+        int currentPositionJ = initialPositionJ;
+        for (int i = 0; i < S.Length; i++) {
+            int move = S[i];
+            if (move == 'U') {
+                if (currentPositionI < 1) {
+                    return "Dead";
+                }
+                if (board[currentPositionI - 1][currentPositionJ] == '.' || board[currentPositionI - 1][currentPositionJ] == 'S') {
+                    currentPositionI -= 1;
+                }
+            }
+            if (move == 'D') {
+                if (currentPositionI == board.Length - 1) {
+                    return "Dead";
+                }
+                if (board[currentPositionI + 1][currentPositionJ] == '.' || board[currentPositionI + 1][currentPositionJ] == 'S') {
+                    currentPositionI += 1;
+                }
+            }
+            if (move == 'L') {
+                if (currentPositionJ < 1) {
+                    return "Dead";
+                }
+                if (board[currentPositionI][currentPositionJ - 1] == '.' || board[currentPositionI][currentPositionJ - 1] == 'S') {
+                    currentPositionJ -= 1;
+                }
+            }
+            if (move == 'R') {
+                if (currentPositionJ == board[0].Length - 1) {
+                    return "Dead";
+                }
+                if (board[currentPositionI][currentPositionJ + 1] == '.' || board[currentPositionI][currentPositionJ + 1] == 'S') {
+                    currentPositionJ += 1;
+                }
+            }
+        }
+        return "Alive";
     }
 
     #region Testing code
