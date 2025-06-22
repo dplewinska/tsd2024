@@ -1,0 +1,43 @@
+﻿@model Yummy.Models.Recipe
+
+@{
+    ViewData["Title"] = "Edit Recipe";
+}
+
+<h1>Edit Recipe</h1>
+
+<form asp-action="Edit" style="display: flex; flex-direction: column; gap: 2rem;">
+    <input type="hidden" asp-for="ID" />
+    <input type="hidden" asp-for="NumberOfLikes" />
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Time"></label>
+        <input asp-for="Time" />
+    </div>
+    <div>
+        <label asp-for="Difficulty"></label>
+        <input asp-for="Difficulty" />
+    </div>
+    <div>
+        <label asp-for="Ingredients"></label>
+        <input asp-for="Ingredients" />
+    </div>
+    <div>
+        <label asp-for="Process"></label>
+        <input asp-for="Process" />
+    </div>
+    <div>
+        <label asp-for="TipsAndTricks"></label>
+        <input asp-for="TipsAndTricks" />
+    </div>
+    
+
+    <!-- Add fields for other properties similarly -->
+
+    <button type="submit" style="width: 20rem;">Save Changes</button>
+</form>
+
+<a asp-action="Index">Back to List</a>

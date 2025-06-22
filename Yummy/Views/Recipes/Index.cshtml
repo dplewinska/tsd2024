@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Yummy.Models.Recipe>
+
+@{
+    ViewData["Title"] = "Recipes List";
+}
+
+<h1>Recipes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Difficulty</th>
+            <th>Number of Likes</th>
+            <th>Ingredients</th>
+            <th>Process</th>
+            <th>Tips and Tricks</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var recipe in Model)
+{
+    <tr>
+        <td>@recipe.Name</td>
+        <td>@recipe.Time</td>
+        <td>@recipe.Difficulty</td>
+        <td>@recipe.NumberOfLikes</td>
+        <td>@recipe.Ingredients</td>
+        <td>@recipe.Process</td>
+        <td>@recipe.TipsAndTricks</td>
+        <td>
+            <a asp-action="Details" asp-route-id="@recipe.ID">Details</a> |
+            <a asp-action="Edit" asp-route-id="@recipe.ID">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@recipe.ID">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+
+<!-- Additional code for viewing, deleting, and editing recipes would go here -->
